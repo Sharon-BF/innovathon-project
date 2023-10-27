@@ -1,4 +1,7 @@
+'use client'
 import { expense } from '@/mocks/expense'
+import Link from 'next/link'
+
 export default function Home () {
   return (
     <main className="flex font-frubik flex-col items-center justify-between p-10">
@@ -9,10 +12,17 @@ export default function Home () {
             expense.map(spent => {
               const { id, name, description } = spent
               return (
-                <li key={id} className='card'>
+                <Link
+                  key={id}
+                  className='card'
+                  href={{
+                    pathname: '/categoria',
+                    query: { id }
+                  }}
+                >
                   <h3>{name}</h3>
-                  <p>{description}</p>
-                </li>
+                  <p className='my-3'>{description}</p>
+                </Link>
               )
             })
           }

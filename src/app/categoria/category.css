@@ -1,0 +1,18 @@
+.historyItems {
+    display: none
+}
+
+.historyItems.active {
+    display: block;
+}
+
+.category__section {
+    max-width: 600px;
+}
+
+.category__section .category__item {
+    background-color: aqua;
+    margin: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
