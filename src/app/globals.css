@@ -19,11 +19,6 @@ h3 {
   color: #3f47e1;
 }
 
-section {
-  width: 100%;
-  max-width: 1200px;
-}
-
 .cards-container {
   width: 100%;
   display: grid;
