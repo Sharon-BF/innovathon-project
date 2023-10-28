@@ -1,14 +1,14 @@
 import React from 'react'
 
 interface PropsCard {
-    name: string;
-    image: string;
-    amount: number;
-    description: string;
+  name: string
+  image: string
+  amount: number
+  description: string
 }
 
-export default function CardSaving({ name, image, amount, description }: PropsCard) {
-    return (
+export default function CardSaving ({ name, image, amount, description }: PropsCard) {
+  return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img className="rounded-t-lg" src={image} alt="" />
@@ -26,5 +26,5 @@ export default function CardSaving({ name, image, amount, description }: PropsCa
                 </a>
             </div>
         </div>
-    )
+  )
 }

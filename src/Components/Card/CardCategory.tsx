@@ -1,15 +1,15 @@
-import Link from 'next/link';
+import Link from 'next/link'
 import React from 'react'
 
 interface PropsCard {
-    id: number;
-    name: string;
-    imageUrl: string;
+  id: number
+  name: string
+  imageUrl: string
 }
 
-export default function CardCategory({ id, name, imageUrl }: PropsCard) {
-    return (
-        <Link href={`/savings/${id}`}>
+export default function CardCategory ({ id, name, imageUrl }: PropsCard) {
+  return (
+        <Link href={`/ahorro/personal/${id}`}>
             <div className="w-fit bg-white border border-gray-200 rounded-lg shadow ">
                 <div className='w-32 h-24 rounded-lg shadow'>
                     {
@@ -22,6 +22,5 @@ export default function CardCategory({ id, name, imageUrl }: PropsCard) {
             </div>
         </Link>
 
-
-    )
+  )
 }

@@ -1,66 +1,65 @@
 'use client'
-import CardBill from '@/Components/Card/CardBIll';
-import { icons } from '@/assets/icons';
-import { bills } from '@/mocks/bills';
-import { steps } from '@/mocks/steps';
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, InputAdornment, InputLabel, OutlinedInput, Step, StepLabel, Stepper, TextField } from '@mui/material';
+import CardBill from '@/Components/Card/CardBIll'
+import { icons } from '@/assets/icons'
+import { bills } from '@/mocks/bills'
+import { steps } from '@/mocks/steps'
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, InputAdornment, OutlinedInput, Step, StepLabel, Stepper } from '@mui/material'
 import React, { useState } from 'react'
 
 interface Data {
-    ingreso: number
-    type: DataType
-    gasto: number
-    ahorro: number
+  ingreso: number
+  type: DataType
+  gasto: number
+  ahorro: number
 }
 
 interface Condiciones {
-    acepto: boolean
-    politica: boolean
+  acepto: boolean
+  politica: boolean
 }
 
-type DataType = 'fijos' | 'variables' | '';
+type DataType = 'fijos' | 'variables' | ''
 
-export default function Saving() {
-    const [data, setData] = useState<Data>({
-        ingreso: 0,
-        type: '',
-        gasto: 0,
-        ahorro: 430
-    });
+export default function Saving () {
+  const [data, setData] = useState<Data>({
+    ingreso: 0,
+    type: '',
+    gasto: 0,
+    ahorro: 430
+  })
 
-    const [condiciones, setCondiciones] = useState<Condiciones>({
-        acepto: false,
-        politica: false
-    });
+  const [condiciones, setCondiciones] = useState<Condiciones>({
+    acepto: false,
+    politica: false
+  })
 
-    const [section, setSection] = useState(0);
+  const [section, setSection] = useState(0)
 
-    const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setData({ ...data, [event.target.name]: event.target.value });
-    }
+  const onHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setData({ ...data, [event.target.name]: event.target.value })
+  }
 
-    const onHandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        nextSection();
-    }
+  const onHandleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    nextSection()
+  }
 
-    const nextSection = () => {
-        if (section < 2) setSection(section + 1);
-    };
+  const nextSection = () => {
+    if (section < 2) setSection(section + 1)
+  }
 
-    const returnSection = () => {
-        if (section > 0) setSection(section - 1);
+  const returnSection = () => {
+    if (section > 0) setSection(section - 1)
+  }
 
-    }
-
-    const onHandleChangeCondiciones = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setCondiciones({ ...condiciones, [event.target.name]: event.target.value });
-    }
-    return (
+  const onHandleChangeCondiciones = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCondiciones({ ...condiciones, [event.target.name]: event.target.value })
+  }
+  return (
         <div className='flex flex-col gap-4 items-center'>
             {
-                section < 2 ? (
-                    <>
+                section < 2
+                  ? <>
                         {/* navigation */}
                         <Box sx={{ width: '100%' }}>
                             <Stepper activeStep={section} alternativeLabel>
@@ -154,10 +153,10 @@ export default function Saving() {
                                     </div>
                                     {
                                         bills.map(bills => {
-                                            const { id, name, amount } = bills;
-                                            return (
+                                          const { id, name, amount } = bills
+                                          return (
                                                 <CardBill key={id} name={name} amount={amount} />
-                                            )
+                                          )
                                         })
 
                                     }
@@ -231,8 +230,7 @@ export default function Saving() {
                             </div>
                         }
                     </>
-                ) :
-                    <>
+                  : <>
                         {/* Terminos y condiciones */}
                         <div className='flex flex-col justify-center items-center'>
                             <form action="" className='max-w-lg flex flex-col gap-6' onSubmit={onHandleSubmit}>
@@ -280,5 +278,5 @@ export default function Saving() {
                     </>
             }
         </div>
-    )
+  )
 }
