@@ -1,4 +1,4 @@
-import CardCategory from '@/components/Card/CardCategory'
+import CardCategory from '@/Components/Card/CardCategory'
 
 import { categories } from '@/mocks/categories'
 import React from 'react'

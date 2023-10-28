@@ -1,5 +1,5 @@
 'use client'
-import CardBill from '@/components/Card/CardBIll'
+import CardBill from '@/Components/Card/CardBIll'
 import { icons } from '@/assets/icons'
 import { bills } from '@/mocks/bills'
 import { steps } from '@/mocks/steps'
