@@ -1,35 +1,34 @@
-"use client"
+'use client'
 
 import { Checkbox, FormControl, FormControlLabel, FormHelperText, MenuItem, Select, TextField } from '@mui/material'
 import Link from 'next/link'
-import * as yup from 'yup';
-import { useEffect, useState } from 'react';
-import { Formik, useFormik } from 'formik';
-import { useRouter } from 'next/navigation';
+import * as yup from 'yup'
+import { useEffect, useState } from 'react'
+import { Formik, useFormik } from 'formik'
+import { useRouter } from 'next/navigation'
 
 interface PropsLogin {
-    count: number
+  count: number
 }
 
 const validationSchema = yup.object({
-    type: yup.string().required('Este campo es requerido'),
-    value: yup.string().required('Este campo es requerido').matches(/^[0-9]{8}$/, 'El DNI ingresado no es válido'),
-    card: yup.string().required('Este campo es requerido').matches(/^\d{4} \d{4} \d{4} \d{4}$/, 'El número de tarjeta ingresado no es válido'),
-    password: yup.string().required('Este campo es requerido').matches(/^[0-9]{6}$/, 'La clave ingresada no es válida'),
-    code: yup.string().required('Este campo es requerido'),
-});
+  type: yup.string().required('Este campo es requerido'),
+  value: yup.string().required('Este campo es requerido').matches(/^[0-9]{8}$/, 'El DNI ingresado no es válido'),
+  card: yup.string().required('Este campo es requerido').matches(/^\d{4} \d{4} \d{4} \d{4}$/, 'El número de tarjeta ingresado no es válido'),
+  password: yup.string().required('Este campo es requerido').matches(/^[0-9]{6}$/, 'La clave ingresada no es válida'),
+  code: yup.string().required('Este campo es requerido')
+})
 
 const LoginPage = ({ count }: PropsLogin) => {
+  const router = useRouter()
 
-    const router = useRouter()
+  const formatCard = (card: string) => {
+    return card.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim()
+  }
 
-    const formatCard = (card: string) => {
-        return card.replace(/\s/g, '').replace(/(\d{4})/g, '$1 ').trim();
-    }
-
-    return (
+  return (
         <div className="w-full h-screen flex ">
-            <div className="relative w-1/3 bg-cover bg-center hidden lg:block" style={{ backgroundImage: "url(https://loginunico.viabcp.com/assets/img/ciam/W4.jpg)" }}>
+            <div className="relative w-1/3 bg-cover bg-center hidden lg:block" style={{ backgroundImage: 'url(https://loginunico.viabcp.com/assets/img/ciam/W4.jpg)' }}>
                 <img className="absolute w-24 m-6" src="./images/logo.svg" alt="" />
             </div>
             <div className="flex flex-col w-full lg:w-2/3 bg-white px-4 overflow-scroll">
@@ -48,33 +47,33 @@ const LoginPage = ({ count }: PropsLogin) => {
                 <div className="px-0 sm:px-10 md:px-40 w-full">
                     <Formik
                         initialValues={{
-                            type: 'dni',
-                            value: '',
-                            card: "4557",
-                            password: "",
-                            code: ""
+                          type: 'dni',
+                          value: '',
+                          card: '4557',
+                          password: '',
+                          code: ''
                         }}
                         validationSchema={validationSchema}
                         onSubmit={(values) => {
-                            router.push('/ahorro');
+                          router.push('/ahorro')
                         }}
                     >
                         {
                             ({
-                                values,
-                                errors,
-                                touched,
-                                handleChange,
-                                handleBlur,
-                                handleSubmit,
-                                isSubmitting,
-                                /* and other goodies */
+                              values,
+                              errors,
+                              touched,
+                              handleChange,
+                              handleBlur,
+                              handleSubmit,
+                              isSubmitting
+                              /* and other goodies */
                             }) => (
                                 <>
                                     <form className="flex flex-col gap-8" action="" onSubmit={handleSubmit}>
                                         <div><h2 className="text-blue-900 text-center font-bold text-xl">Warda</h2></div>
                                         <div>
-                                            <FormControl className="w-full" sx={{ display: "flex", flexDirection: "col" }}>
+                                            <FormControl className="w-full" sx={{ display: 'flex', flexDirection: 'col' }}>
 
                                                 <div className='flex'>
                                                     <Select
@@ -144,7 +143,7 @@ const LoginPage = ({ count }: PropsLogin) => {
                                                 <TextField
                                                     className="w-1/3"
                                                     disabled
-                                                    style={{ backgroundImage: "url(./images/logo.svg)" }}
+                                                    style={{ backgroundImage: 'url(./images/logo.svg)' }}
                                                 />
                                                 <TextField className="w-full"
                                                     required
@@ -181,10 +180,10 @@ const LoginPage = ({ count }: PropsLogin) => {
                 </div>
             </div >
         </div >
-    )
+  )
 }
 const EndSession = () => {
-    return (
+  return (
         <div>
             <div className="flex flex-col items-center justify-center h-screen">
                 <h1 className="text-4xl font-bold mb-8">¡Tu sesión ha terminado!</h1>
@@ -193,34 +192,33 @@ const EndSession = () => {
                 </Link>
             </div>
         </div>
-    );
+  )
 }
 
-export default function Login() {
-    const [count, setCount] = useState<number>(0);
-    //Corregir error al inicio de la pagina
-    // const [count, setCount] = useState<number>(Number(sessionStorage.getItem('time')));
+export default function Login () {
+  const [count, setCount] = useState<number>(0)
+  // Corregir error al inicio de la pagina
+  // const [count, setCount] = useState<number>(Number(sessionStorage.getItem('time')));
 
-    useEffect(() => {
-        setCount(Number(sessionStorage.getItem('time')));
-    }, [])
+  useEffect(() => {
+    setCount(Number(sessionStorage.getItem('time')))
+  }, [])
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCount(prevCount => {
-                const newCount = prevCount - 1;
-                sessionStorage.setItem('time', newCount.toString());
-                return newCount;
-            });
-        }, 1000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCount(prevCount => {
+        const newCount = prevCount - 1
+        sessionStorage.setItem('time', newCount.toString())
+        return newCount
+      })
+    }, 1000)
 
-        return () => clearInterval(interval);
-    }, [setCount]);
+    return () => { clearInterval(interval) }
+  }, [setCount])
 
-    return (
+  return (
         <>
             {count >= 0 ? <LoginPage count={count} /> : <EndSession />}
         </>
-    );
+  )
 }
-

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
  * a `<NavBar>` component and the `children` prop.
  */
 
-export default function RootLayout({
+export default function RootLayout ({
   children
 }: {
   children: React.ReactNode
