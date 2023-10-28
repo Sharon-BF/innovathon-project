@@ -1,6 +1,10 @@
 'use client'
 import Link from 'next/link'
-
+/**
+ * The above function is a React csomponent for the Home page of an Innovathon application, which
+ * includes a heading and a login button.
+ * @returns a JSX element.
+ */
 export default function Home () {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">

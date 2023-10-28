@@ -1,6 +1,15 @@
+/* The `interface EmailTemplateProps` defines the props that can be passed to the `EmailTemplate`
+component. In this case, it specifies that the component expects a prop called `firstName` of type
+`string`. This prop is used to personalize the email template by addressing the recipient by their
+first name. */
 interface EmailTemplateProps {
     firstName: string;
 }
+/**
+ * The EmailTemplate function generates an email template for a generated invoice, including details of
+ * the invoice and contact information.
+ * @param  - - `firstName`: The first name of the recipient of the email.
+ */
 
 export const EmailTemplate: React.FC<Readonly<EmailTemplateProps>> = ({
     firstName,
