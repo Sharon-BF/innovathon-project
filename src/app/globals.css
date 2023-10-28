@@ -1,27 +1,52 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?=Rubik:wght@300;400;600;700;900&display=swap");
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+p {
+  color: #31274f;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2d36b0;
+}
+
+h3 {
+  font-size: 20px;
+  color: #3f47e1;
+}
+
+.cards-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  box-shadow:
+    0 8px 10px -5px rgba(103, 80, 192, .2),
+    0 6px 30px 5px rgba(135, 118, 208, .14),
+    0 16px 24px 2px rgba(229, 230, 255, .14);
+  border-radius: 25px;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  /* :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-  }
+  */
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
+*/

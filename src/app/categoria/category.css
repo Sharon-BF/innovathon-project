@@ -1,0 +1,20 @@
+.historyItems {
+    max-height: 150px;
+        overflow: auto;
+}
+
+.historyItems.active {
+    display: block;
+}
+
+.category__section {
+    max-width: 600px;
+}
+
+.category__section .category__item {
+    margin: 10px 0;
+    border-radius: 15px;
+        border: solid 1px #2d36b0;
+    cursor: pointer;
+    padding: 10px 15px;
+}
