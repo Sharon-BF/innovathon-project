@@ -5,7 +5,7 @@ import Link from 'next/link'
  * includes a heading and a login button.
  * @returns a JSX element.
  */
-export default function Home () {
+export default function Home() {
   return (
     <main className="bg-gradient-to-r from-cyan-500 to-blue-500 flex min-h-screen flex-col items-center p-24">
       <div className='flex items-center gap-0'>
@@ -27,6 +27,9 @@ export default function Home () {
           <button className='py-2 px-8 bg-orange-600 rounded-full text-white'>
             Regístrate ahora
           </button>
+          <Link className="bg-orange-500 py-2 px-8 rounded-full text-white hover:bg-orange-400" href="/login" onClick={() => {
+            sessionStorage.setItem('time', '300')
+          }}>Login</Link>
         </div>
         <div className='w-1/2'>
           <img src="https://acdneu2wrdap01ecdn02.azureedge.net/assets-landing-nuevo/img/img-intro.png" alt="" />

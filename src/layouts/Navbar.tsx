@@ -3,10 +3,12 @@ import { useRouter } from 'next/navigation'
 import LOGO from '../../public/logo.png'
 import './layouts.css'
 
-export function NavBar () {
+export function NavBar() {
   const route = useRouter()
   const handleClick = () => {
     route.push('/login')
+    sessionStorage.setItem('time', '300')
+
   }
   return (
     <nav>
