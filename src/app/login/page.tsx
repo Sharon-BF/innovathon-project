@@ -56,7 +56,7 @@ const LoginPage = ({ count }: PropsLogin) => {
                         }}
                         validationSchema={validationSchema}
                         onSubmit={(values) => {
-                            router.push('/ahorros');
+                            router.push('/ahorro');
                         }}
                     >
                         {

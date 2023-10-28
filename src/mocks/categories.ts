@@ -3,19 +3,19 @@ export const categories = [
     id: 1,
     imageUrl: '../../../../images/depa.png',
     name: 'Mi Depa',
-    state: 'active'
+    state: 'disabled'
   },
   {
     id: 2,
     imageUrl: '../../../../images/auto.png',
     name: 'Mi auto',
-    state: 'active'
+    state: 'disabled'
   },
   {
     id: 3,
     imageUrl: '../../../../images/viaje.png',
     name: 'Viaje',
-    state: 'active'
+    state: 'disabled'
   },
   {
     id: 4,
