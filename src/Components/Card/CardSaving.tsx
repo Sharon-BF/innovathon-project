@@ -1,14 +1,24 @@
 import React from 'react'
 
+/* The `interface PropsCard` defines the structure of the props that the `CardSaving` component expects
+to receive. It specifies that the component requires four props: `name` (a string), `image` (a
+string), `amount` (a number), and `description` (a string). These props are used within the
+component to display the name, image, amount, and description of a savings card. */
 interface PropsCard {
-  name: string
-  image: string
-  amount: number
-  description: string
+    name: string
+    image: string
+    amount: number
+    description: string
 }
 
-export default function CardSaving ({ name, image, amount, description }: PropsCard) {
-  return (
+/**
+ * The CardSaving function is a React component that renders a card with an image, name, description,
+ * and a "Read more" button.
+ * @param {PropsCard}  - - `name`: The name of the card.
+ * @returns a JSX element, which represents a card component for displaying savings information.
+ */
+export default function CardSaving({ name, image, amount, description }: PropsCard) {
+    return (
         <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <img className="rounded-t-lg" src={image} alt="" />
@@ -26,5 +36,5 @@ export default function CardSaving ({ name, image, amount, description }: PropsC
                 </a>
             </div>
         </div>
-  )
+    )
 }

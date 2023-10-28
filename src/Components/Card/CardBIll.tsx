@@ -7,6 +7,12 @@ interface CardProps {
     amount: number
 }
 
+/**
+ * The CardBill function is a React component that renders a card displaying the name and amount of a
+ * bill.
+ * @param {CardProps}  - The `CardBill` function takes two parameters: `name` and `amount`.
+ * @returns a JSX element, which represents a card bill.
+ */
 export default function CardBill({ name, amount }: CardProps) {
     return (
         <div className='flex py-3'>
