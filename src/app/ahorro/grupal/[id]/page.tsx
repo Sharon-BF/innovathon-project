@@ -13,22 +13,34 @@ import WARDADITO from '../../../../../public/Images/Wardadito.png'
 interface UserSearch {
   id: string
   name: string
+  email: string
 }
 
 export default function CategoryGroup () {
   const router = useRouter()
   const { values, handleChange } = useForm({ initValues: { name: '', value: '' } })
   const { dni } = values
-  const [user, setUser] = useState<UserSearch>({ id: '', name: '' })
+  const [user, setUser] = useState<UserSearch>({ id: '', name: '', email: '' })
   const [addUsers, setAddUsers] = useState<UserSearch[]>([])
   const [loading, setLoading] = useState(false)
   const [click, setClick] = useState(false)
+  const [emails, setEmails] = useState<string[]>([])
 
   const [section, setSection] = useState(0)
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
+    const res = await fetch('/api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ user: user.name, emails })
+    })
+  }
+
+  const handleSearch = () => {
     setLoading(true)
 
     const result = users?.find(user => user.dni === dni)
@@ -36,7 +48,9 @@ export default function CategoryGroup () {
     if (result === undefined) { alert('Usuario no encontrado'); return }
     const user = {
       id: result?.dni,
-      name: `${result?.name} ${result?.lastname}`
+      name: `${result?.name} ${result?.lastname}`,
+      email: result?.email
+
     }
 
     setTimeout(() => {
@@ -51,10 +65,12 @@ export default function CategoryGroup () {
 
     const userSearch: UserSearch = {
       id: dni,
-      name: user.name
+      name: user.name,
+      email: user.email
     }
     setAddUsers([...addUsers, userSearch])
     setClick(true)
+    setEmails([...emails, user.email])
   }
 
   const handleRemoveUser = (id: string) => {
@@ -167,7 +183,7 @@ export default function CategoryGroup () {
                                                         onChange={handleChange}
                                                     />
                                                 </FormControl>
-                                                <Button type='submit' className='p-3 bg-indigo-600'>
+                                                <Button type='button' className='p-3 bg-indigo-600' onClick={() => { handleSearch() }}>
                                                     <SearchIcon className='decoration-white' />
                                                 </Button>
                                             </div>
