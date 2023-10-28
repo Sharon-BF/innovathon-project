@@ -132,127 +132,127 @@ export default function CategoryGroup () {
                                       </div>
                                   </div>
 
-                                  <div>
-                                      <button className='w-full py-2 rounded-full bg-blue-600 font-medium capitalize  text-white text-sm' onClick={handleNextSection}>
-                                          siguiente
-                                      </button>
-                                  </div>
-                              </form>
+                                        <div>
+                                            <button className='w-full py-2 rounded-full bg-blue-600 font-medium capitalize  text-white text-sm' onClick={handleNextSection}>
+                                                siguiente
+                                            </button>
+                                        </div>
+                                    </form>
 
-                          </section>
-                      </div>
-                  }
-                  {/* Section 2 */}
-                  {
-                    section === 1 &&
-                    <div>
-                          <section>
-                              <form className='max-w-lg flex flex-col gap-6' onSubmit={handleSubmit}>
+                                </section>
+                            </div>
+                        }
+                        {/* Section 2 */}
+                        {
+                            section === 1 &&
+                            <div>
+                                <section>
+                                    <form className='max-w-lg flex flex-col gap-6' onSubmit={handleSubmit}>
 
-                                <div className='flex items-center'>
-                                    <h3>
-                                        <span className='font-bold'>Elige a una o más personas para wardar</span><br />Enviaremos un correo electrónico con la invitación
-                                    </h3>
+                                        <div className='flex items-center'>
+                                            <h3>
+                                                <span className='font-bold'>Elige a una o más personas para wardar</span><br />Enviaremos un correo electrónico con la invitación
+                                            </h3>
+                                        </div>
+
+                                        <div>
+                                            <div className='flex'>
+                                                <FormControl fullWidth>
+                                                    <TextField
+                                                        id="outlined-search"
+                                                        label="Buscar dni"
+                                                        type="search"
+                                                        name='dni'
+                                                        value={dni}
+                                                        onChange={handleChange}
+                                                    />
+                                                </FormControl>
+                                                <Button type='submit' className='p-3 bg-indigo-600'>
+                                                    <SearchIcon className='decoration-white' />
+                                                </Button>
+                                            </div>
+                                            <div className='my-3'>
+                                                {
+                                                    loading
+                                                      ? <p>Buscando...</p>
+                                                      : <div className={`${(user.name === '' || click) ? 'hidden' : ''}`}>
+                                                            <div className='flex justify-between'>
+                                                                <p>{user.name}</p>
+                                                                <button type='button' onClick={handleAddUser}>Añadir</button>
+                                                            </div>
+                                                        </div>
+                                                }
+
+                                            </div>
+                                            <div className='h-auto my-3'>
+                                                {
+                                                    addUsers.length > 0
+                                                      ? <div>
+                                                            <ul className='h-auto'>
+                                                                {
+                                                                    addUsers.map((user) => {
+                                                                      return (
+                                                                            <li key={user.id} className='flex justify-between my-3 p-3 bg-blue-50 rounded-lg'>
+                                                                                {user.name}
+                                                                                <button type='button' onClick={() => { handleRemoveUser(user.id) }}><HighlightOffIcon /></button>
+                                                                            </li>
+                                                                      )
+                                                                    })
+                                                                }
+                                                            </ul>
+
+                                                        </div>
+                                                      : <Alert severity="info">No hay usuarios seleccionados</Alert>
+                                                }
+
+                                            </div>
+
+                                        </div>
+                                        <div className='flex gap-2.5 p-2.5 w-full bg-blue-50 rounded-lg'>
+                                            <div>
+                                                {icons.character}
+                                            </div>
+                                            <div>
+                                                <p className='text-sm'>
+                                                    Enviaremos tus notificaciones al correo registrado en el banco: <span className='font-bold'>A.DA@GMAIL.COM</span>para actualizarlo comunícate a banca por teléfono.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className='flex gap-10'>
+                                            <button type='button' className='w-full py-2 rounded-full bg-transparent font-medium capitalize  border text-sm' onClick={handleReturnSection} >
+                                                atras
+                                            </button>
+                                            <button type='button' className='w-full py-2 rounded-full bg-blue-600 font-medium text-white text-sm' onClick={handleNextSection}>
+                                                Enviar invitación y registrar
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </section>
+                            </div>
+                        }
+                        {/* Section 3 */}
+                        {
+                            section === 2 &&
+                            <div className='max-w-lg flex flex-col items-center gap-6 mt-3'>
+                                <div className='w-72'>
+                                    <img className='w-full' src={WARDADITO.src} alt="" />
+
                                 </div>
+                                <h2 className=' text-center'>Hemos recibido tu solicitud</h2>
+                                <p>Al haberla registrado luego de las 8:30 a.m. podrás ver tu Wardadito a partir de las 7 a.m. Además te notificaremos a tu correo cuando lo hayamos creado</p>
+                                <p>¡Recuerda que también podrás realizar aportes voluntarios!</p>
+                                <button type='button' className='w-full py-2 rounded-full bg-blue-600 font-medium text-white text-sm' onClick={handleReturnInit}>
+                                    Regresar al inicio
+                                </button>
+                            </div>
+                        }
 
-                                  <div>
-                                    <div className='flex'>
-                                        <FormControl fullWidth>
-                                            <TextField
-                                                id="outlined-search"
-                                                label="Buscar dni"
-                                                type="search"
-                                                name='dni'
-                                                value={dni}
-                                                onChange={handleChange}
-                                            />
-                                        </FormControl>
-                                        <Button type='submit' className='p-3 bg-indigo-600'>
-                                            <SearchIcon className='decoration-white' />
-                                        </Button>
-                                    </div>
-                                    <div className='my-3'>
-                                        {
-                                            loading
-                                              ? <p>Buscando...</p>
-                                              : <div className={`${(user.name === '' || click) ? 'hidden' : ''}`}>
-                                                    <div className='flex justify-between'>
-                                                        <p>{user.name}</p>
-                                                        <button type='button' onClick={handleAddUser}>Añadir</button>
-                                                    </div>
-                                                </div>
-                                        }
-
-                                    </div>
-                                    <div className='h-auto my-3'>
-                                        {
-                                            addUsers.length > 0
-                                              ? <div>
-                                                    <ul className='h-auto'>
-                                                        {
-                                                            addUsers.map((user) => {
-                                                              return (
-                                                                    <li key={user.id} className='flex justify-between my-3 p-3 bg-blue-50 rounded-lg'>
-                                                                        {user.name}
-                                                                        <button type='button' onClick={() => { handleRemoveUser(user.id) }}><HighlightOffIcon/></button>
-                                                                    </li>
-                                                              )
-                                                            })
-                                                        }
-                                                    </ul>
-
-                                                </div>
-                                              : <Alert severity="info">No hay usuarios seleccionados</Alert>
-                                        }
-
-                                    </div>
-
-                                  </div>
-                                  <div className='flex gap-2.5 p-2.5 w-full bg-blue-50 rounded-lg'>
-                                      <div>
-                                          {icons.character}
-                                      </div>
-                                      <div>
-                                          <p className='text-sm'>
-                                              Enviaremos tus notificaciones al correo registrado en el banco: <span className='font-bold'>A.DA@GMAIL.COM</span>para actualizarlo comunícate a banca por teléfono.
-                                          </p>
-                                      </div>
-                                  </div>
-
-                                  <div className='flex gap-10'>
-                                        <button type='button' className='w-full py-2 rounded-full bg-transparent font-medium capitalize  border text-sm' onClick={handleReturnSection} >
-                                            atras
-                                        </button>
-                                        <button type='button' className='w-full py-2 rounded-full bg-blue-600 font-medium text-white text-sm' onClick={handleNextSection}>
-                                            Enviar invitación y registrar
-                                        </button>
-                                    </div>
-                              </form>
-
-                          </section>
-                      </div>
-                  }
-                  {/* Section 3 */}
-                  {
-                    section === 2 &&
-                    <div className='max-w-lg flex flex-col items-center gap-6 mt-3'>
-                        <div className='w-72'>
-                            <img className='w-full' src={WARDADITO.src} alt="" />
-
-                        </div>
-                        <h2 className=' text-center'>Hemos recibido tu solicitud</h2>
-                        <p>Al haberla registrado luego de las 8:30 a.m. podrás ver tu Wardadito a partir de las 7 a.m. Además te notificaremos a tu correo cuando lo hayamos creado</p>
-                        <p>¡Recuerda que también podrás realizar aportes voluntarios!</p>
-                        <button type='button' className='w-full py-2 rounded-full bg-blue-600 font-medium text-white text-sm' onClick={handleReturnInit}>
-                            Regresar al inicio
-                        </button>
-                    </div>
-                  }
-
-            </>
+                    </>
               : <></>
-        }
-    </div>
+            }
+        </div>
 
   )
 }
