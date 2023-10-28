@@ -1,0 +1,18 @@
+.ahorro_main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.section-ahorro {
+    max-width: 800px !important;
+    display: flex;
+    align-items: center;
+}
+
+.section-ahorro ul {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

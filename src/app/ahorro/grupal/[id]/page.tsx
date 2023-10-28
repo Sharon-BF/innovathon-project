@@ -72,10 +72,11 @@ export default function CategoryGroup () {
 
   const handleReturnInit = () => {
     router.push('/ahorro/grupal')
+    localStorage.setItem('display', 'yes')
   }
 
   return (
-    <div className='flex flex-col gap-4 items-center'>
+    <div className='flex flex-col gap-4 items-center mt-10'>
         {
             section < 3
               ? <>

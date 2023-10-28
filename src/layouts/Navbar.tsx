@@ -1,19 +1,32 @@
 'use client'
-import { useRouter } from 'next/navigation'
 import LOGO from '../../public/logo.png'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import { useEffect, useState } from 'react'
 import './layouts.css'
 
 export function NavBar () {
-  const route = useRouter()
+  const [token, setToken] = useState(localStorage.getItem('token'))
+
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+  }, [localStorage.getItem('token')])
+
   const handleClick = () => {
-    route.push('/login')
+    // Aquí puedes manejar la lógica de cierre de sesión
+    localStorage.removeItem('token')
+    setToken(null)
   }
+
   return (
     <nav>
-        <div className='flex items-center'>
-            <img src={LOGO.src} alt="logo" />
-        </div>
-        <button onClick={handleClick}>Login</button>
+      <div className='flex items-center'>
+        <img src={LOGO.src} alt="logo" />
+      </div>
+      {
+        (token === null || token === undefined || token === '')
+          ? <button >Login</button>
+          : <AccountCircleIcon onClick={handleClick} />
+      }
     </nav>
   )
 }
