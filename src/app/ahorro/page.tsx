@@ -7,7 +7,7 @@ export default function Ahorro () {
       <Link
         className='card'
         href={{
-          pathname: '/personal'
+          pathname: '/ahorro/personal'
         }}
       >
           <h3>Cuenta Personal</h3>
@@ -16,7 +16,7 @@ export default function Ahorro () {
       <Link
         className='card'
         href={{
-          pathname: '/grupal'
+          pathname: '/ahorro/grupal'
         }}
       >
           <h3>Cuenta Grupal</h3>
