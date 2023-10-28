@@ -5,7 +5,6 @@ import Link from 'next/link'
 import * as yup from 'yup';
 import { useEffect, useState } from 'react';
 import { Formik, useFormik } from 'formik';
-import { validateDNI } from '@/lib/validate';
 import { useRouter } from 'next/navigation';
 
 interface PropsLogin {
@@ -99,9 +98,10 @@ const LoginPage = ({ count }: PropsLogin) => {
                                                         value={values.value}
                                                         inputProps={{ maxLength: 8 }}
                                                     />
-                                                    {errors.value && touched.value && errors.value}
                                                 </div>
-
+                                                <p className='text-red-600 font-medium text-xs'>
+                                                    {errors.value && touched.value && errors.value}
+                                                </p>
                                             </FormControl>
                                         </div>
                                         <div>
@@ -113,8 +113,9 @@ const LoginPage = ({ count }: PropsLogin) => {
                                                 value={formatCard(values.card)}
                                                 inputProps={{ maxLength: 19 }}
                                             />
-                                            {errors.card && touched.card && errors.card}
-                                            {/* {errors.card && touched.card && errors.card} */}
+                                            <p className='text-red-600 font-medium text-xs'>
+                                                {errors.card && touched.card && errors.card}
+                                            </p>
                                         </div>
                                         <div>
                                             <FormControlLabel control={<Checkbox />} label="Recordar datos" />
@@ -130,7 +131,9 @@ const LoginPage = ({ count }: PropsLogin) => {
                                                 onBlur={handleBlur}
                                                 inputProps={{ maxLength: 6 }}
                                                 value={values.password} />
-                                            {errors.password && touched.password && errors.password}
+                                            <p className='text-red-600 font-medium text-xs'>
+                                                {errors.password && touched.password && errors.password}
+                                            </p>
                                             <div className="my-2  flex justify-between">
                                                 <FormHelperText className="text-orange-500"><button>Crear Clave</button></FormHelperText>
                                                 <FormHelperText className="text-orange-500"><button>Olvidé mi clave</button></FormHelperText>
@@ -152,9 +155,11 @@ const LoginPage = ({ count }: PropsLogin) => {
                                                     onBlur={handleBlur}
                                                     inputProps={{ maxLength: 6 }}
                                                 />
-                                                {errors.code && touched.code && errors.code}
 
                                             </div>
+                                            <p className='text-red-600 font-medium text-xs'>
+                                                {errors.code && touched.code && errors.code}
+                                            </p>
                                             <div className="my-2  flex justify-between">
                                                 <FormHelperText className="text-orange-500"><button>Cambiar código</button></FormHelperText>
                                             </div>
